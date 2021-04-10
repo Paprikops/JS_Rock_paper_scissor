@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Game</title>
+<link rel="shortcut icon" href="#">
+</head>
+
+<body>
+
+    >
+
+<script>
+
+
+
+let options = ["rock" , "paper", "scissor"]
+
+
+
+console.log(computerPlay())
+
+
+let computerSelection = computerPlay()
+
+function computerPlay() {
+    let random = Math.floor(Math.random()*options.length)
+
+
+        if (random === 0) 
+            {return options[0]}    
+
+
+        else if (random === 1) 
+            {return options[1]}
+
+        else 
+            {return options[2];}
+
+}
+
+function playerPlay() {
+    let playerChoice = window.prompt('Choose a sign')
+}
+
+
+
+
+
+
+
+}
+
+
+</script>
+    
+</body>
+
+</html> 
