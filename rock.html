@@ -14,41 +14,73 @@
 
 
 let options = ["rock" , "paper", "scissor"]
+let playerScore = 0
+let compScore = 0 
 
 
-
-console.log(computerPlay())
-
-
-let computerSelection = computerPlay()
-
-function computerPlay() {
-    let random = Math.floor(Math.random()*options.length)
-
-
-        if (random === 0) 
-            {return options[0]}    
-
-
-        else if (random === 1) 
-            {return options[1]}
-
-        else 
-            {return options[2];}
-
+function compPlay() {
+    let compSign = Math.floor(Math.random()*options.length)
+    return options[compSign]
 }
 
 function playerPlay() {
-    let playerChoice = window.prompt('Choose a sign')
+    let playerSign = prompt('Choose a sign').toLowerCase()
+    return playerSign
 }
 
+function playRound(playerSelection, computerSelection) {
+
+    if ((playerSelection !== "rock") && 
+        (playerSelection !== "scissor") && 
+        (playerSelection !== "paper")) 
+      
+        {
+            return "You misstyped, try again"
+        }
 
 
+    else if ((playerSelection == "rock" && computerSelection == "scissor")
+    || (playerSelection == "paper" && computerSelection == "rock")
+    || (playerSelection == "scissor" && computerSelection == "paper"))
+        {
+            playerScore++
+            return console.log("You win this round: " + playerSelection + " beats " + computerSelection)
+        }
+    
+    else if (playerSelection === computerSelection) 
+        {
+            return console.log("It's a tie !")
+        }
 
 
+    else {
+            compScore++
+            return console.log("You lose this round! Computer chose " + computerSelection + " against your " + playerSelection)
+        }
+    }
 
 
-}
+function game() {
+
+while ((compScore !== 3) && (playerScore !== 3)) {
+    playRound(playerPlay(), compPlay())
+    console.log("Player: " + playerScore + " Computer: " + compScore) }
+
+    if (compScore == 3) {
+        return console.log("GAMER OVER, YOU LOST")
+    }
+    
+    else if (playerScore == 3) {
+        return console.log("CONGRATULATIONS, YOU WON")
+    }
+
+
+} 
+
+
+game()
+
+
 
 
 </script>
